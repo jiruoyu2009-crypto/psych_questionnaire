@@ -190,21 +190,21 @@ small {
 
 <div class="container" id="welcome">
     <h1>青少年人格与认知表现测评</h1>
-    <p>感谢你参与本次研究。所有数据仅用于学术研究，匿名处理。</p>
+    <p>感谢您参与本次研究。所有数据仅用于学术研究，匿名处理。</p>
     <button onclick="showSection('consent')">开始测评</button>
 </div>
 
 <div class="container hidden" id="consent">
     <h2>知情同意书</h2>
-    <p>感谢你参与本次研究。在开始前，请仔细阅读以下内容：</p>
+    <p>感谢您参与本次研究。在开始前，请仔细阅读以下内容：</p>
     <ul>
         <li>本次测评包含人格问卷、自我评价、逻辑推理任务，大约需要12-15分钟。</li>
-        <li>你的所有回答将被严格保密，仅用于学术分析。</li>
-        <li>你可以随时退出实验而不需要承担任何后果。</li>
+        <li>您的所有回答将被严格保密，仅用于学术分析。</li>
+        <li>您可以随时退出实验而不需要承担任何后果。</li>
         <li>实验结束后会提供完整的事后说明。</li>
         <li>完成本研究，您将获得对自身特质更深入的了解。</li>
     </ul>
-    <p>点击下方按钮代表你自愿同意参与本实验。</p>
+    <p>点击下方按钮代表您自愿同意参与本实验。</p>
     <div class="flex-buttons">
         <button onclick="showSection('questionnaire')">我同意并继续</button>
         <button onclick="handleExitConsent()" style="background:#a5714c;">若不同意参加，请关闭页面</button>
@@ -213,7 +213,7 @@ small {
 
 <div class="container hidden" id="questionnaire">
     <h2>人格特质测评</h2>
-    <p>请根据以下表述和你本人的相符程度进行评分。</p>
+    <p>请根据以下表述和您本人的相符程度进行评分。</p>
     <p style="background:#f6f5ef; padding:12px 16px; border-radius:16px; border-left:4px solid #56878b; color:#2c4b55; font-size:0.9rem;">
         <strong>评分说明：</strong>1 = 完全不像我，5 = 非常像我
     </p>
@@ -255,7 +255,7 @@ small {
 <!-- 自我认知问卷 (调整至谜题之前) -->
 <div class="container hidden" id="selfconcept">
     <p style="font-size:1.15rem; font-weight:600; line-height:1.6;">接下来，请根据您的真实想法，回答一些关于自身看法的问题。答案无正误之分。</p>
-    <p style="font-size:0.95rem; color:#5b737c;">请根据你对自己的真实看法，评价以下陈述 (1=完全不同意，7=完全同意)。</p>
+    <p style="font-size:0.95rem; color:#5b737c;">请根据您对自己的真实看法，评价以下陈述 (1=完全不同意，7=完全同意)。</p>
     <div class="question">
         <p><strong>1.</strong> 我认为自己是一个能够坚持完成任务的人。</p>
         <input type="range" min="1" max="7" value="4" id="self1" data-changed="false" oninput="markRangeSelected(this)">
@@ -286,7 +286,7 @@ small {
 
 <div class="container hidden" id="puzzle">
     <h2>逻辑谜题</h2>
-    <p>请尝试解决以下推理题。系统将自动记录你的坚持时间、尝试次数，并可以随时选择“放弃”。</p>
+    <p>请尝试解决以下推理题。系统将自动记录您的坚持时间、尝试次数，并可以随时选择“放弃”。</p>
     <hr>
     <h3>六位数密码谜题</h3>
     <p>一个六位数密码符合所有下列条件：</p>
@@ -304,7 +304,9 @@ small {
     </div>
     <p id="attemptsDisplay" style="font-weight:500; margin-top:16px;"></p>
     <p class="timer" id="timerDisplay">已坚持时间：0 秒</p>
-    <p><small>提示: 可以通过逻辑推导，若认为无解可尝试“不存在”作为答案。</small></p>
+    <p style="font-size:0.95rem; color:#5b737c; line-height:1.6;">
+        本研究关注个体独立解决问题的过程，因此请您在作答过程中尽量依靠自身能力完成题目，而不要借助人工智能工具或其他外部资源。您的真实表现对研究非常重要。
+    </p>
 </div>
 <div class="container hidden" id="demographics">
     <h2>人口学信息</h2>
@@ -344,13 +346,14 @@ small {
 <div class="container hidden" id="debrief">
     <h2>实验说明</h2>
     <div class="debrief-box">
-        <p>🙏 感谢你认真参与本次研究！</p>
-        <p>💡 <strong>本研究真实目的：</strong>探究当青少年被贴上积极或消极人格标签后，他们是否会在将来按照这个标签调整自己的自我认知与行为。你在“人格分析反馈”环节收到的结果实际上是<strong>随机分配</strong>的，并非基于你的真实问卷得分。这是为了科学地研究标签效应，请不必担心。</p>
-        <p>🧾 你的行为数据（坚持时间、尝试次数、自我评价）已匿名记录，仅用于统计分析。</p>
-        <p>🎯 再次感谢你为青少年心理学研究做出的贡献！</p>
+        <p>🙏 感谢您认真参与本次研究！</p>
+        <p>💡 <strong>本研究真实目的：</strong>探究当青少年被贴上积极或消极人格标签后，他们是否会在将来按照这个标签调整自己的自我认知与行为。您在“人格分析反馈”环节收到的结果实际上是<strong>随机分配</strong>的，并非基于您的真实问卷得分。这是为了科学地研究标签效应，请不必担心。</p>
+        <p>🧾 对于控制组而言，您在反馈页面中未收到任何针对人格特征的标签性结论；本研究的重点在于观察在完成任务前后，个体的自我认知与行为表现是否发生变化。</p>
+        <p>🧾 您的行为数据（坚持时间、尝试次数、自我评价）已匿名记录，仅用于统计分析。</p>
+        <p>🎯 再次感谢您为青少年心理学研究做出的贡献！</p>
     </div>
     <hr>
-    <p><strong>实验数据已上传</strong> — 你可以安全关闭此页面。</p>
+    <p><strong>实验数据已上传</strong> — 您可以安全关闭此页面。</p>
 </div>
 
 <script>
@@ -501,7 +504,7 @@ async function uploadExperimentData(payload) {
 
 function submitQuestionnaire() {
     if (!isQuestionnaireComplete()) {
-        alert("请完整填写所有人格测评题目（每道题选1-7分）后再提交。");
+        alert("请完整填写所有人格测评题目（每道题选1-5分）后再提交。");
         return;
     }
     sessionStartAt = Date.now();
@@ -555,7 +558,7 @@ function generateFeedbackWithPersistence() {
         assignedGroup = "控制组";
         document.getElementById("feedbackText").innerHTML = `
             <strong>📋 测评结果记录</strong><br><br>
-            你的作答已成功保存。感谢你的参与，接下来你将完成自我认知问卷和认知任务。<br>
+            您的作答已成功保存。接下来您将完成自我认知问卷和认知任务。<br>
         `;
         const ratingSec = document.getElementById("ratingSection");
         if (ratingSec) ratingSec.style.display = "none";
@@ -592,6 +595,15 @@ function startSelfConcept() {
 
 // 保存自我认知问卷结果，然后进入谜题任务
 function saveSelfAndStartPuzzle() {
+    const selfInputs = ["self1", "self2", "self3", "self4", "self5"];
+    for (const id of selfInputs) {
+        const el = document.getElementById(id);
+        if (!el || el.dataset.changed !== "true") {
+            alert("请先完成所有自我评价滑块后再继续。");
+            return;
+        }
+    }
+
     // 收集自我认知量表值并存入localStorage
     const self1 = document.getElementById("self1").value;
     const self2 = document.getElementById("self2").value;
