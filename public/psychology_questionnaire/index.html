@@ -155,7 +155,24 @@ input[type=range].range-selected {
     justify-content: space-between;
     color: #5b737c;
     font-size: 0.92rem;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
+}
+.range-scale-legend {
+    color: #5b737c;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+.range-value-display {
+    display: inline-block;
+    margin-top: 6px;
+    margin-bottom: 10px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #e8f2f1;
+    color: #2c4b55;
+    font-size: 0.92rem;
+    font-weight: 700;
 }
 hr {
     margin: 24px 0;
@@ -201,13 +218,13 @@ small {
         <li>本次测评包含人格问卷、自我评价、逻辑推理任务，大约需要12-15分钟。</li>
         <li>您的所有回答将被严格保密，仅用于学术分析。</li>
         <li>您可以随时退出实验而不需要承担任何后果。</li>
-        <li>实验结束后会提供完整的事后说明。</li>
+        <li>实验结束后会提供完整的研究说明。</li>
         <li>完成本研究，您将获得对自身特质更深入的了解。</li>
     </ul>
     <p>点击下方按钮代表您自愿同意参与本实验。</p>
     <div class="flex-buttons">
         <button onclick="showSection('questionnaire')">我同意并继续</button>
-        <button onclick="handleExitConsent()" style="background:#a5714c;">若不同意参加，请关闭页面</button>
+        <button onclick="handleExitConsent()" style="background:#a5714c;">若不同意参加，请直接退出</button>
     </div>
 </div>
 
@@ -215,7 +232,7 @@ small {
     <h2>人格特质测评</h2>
     <p>请根据以下表述和您本人的相符程度进行评分。</p>
     <p style="background:#f6f5ef; padding:12px 16px; border-radius:16px; border-left:4px solid #56878b; color:#2c4b55; font-size:0.9rem;">
-        <strong>评分说明：</strong>1 = 完全不像我，5 = 非常像我
+        <strong>评分说明：</strong>1 = 完全不像我；2 = 比较不像我；3 = 说不上像也不不像；4 = 比较像我；5 = 非常像我。
     </p>
     <form id="personalityForm"></form>
     <button onclick="submitQuestionnaire()">继续</button>
@@ -242,11 +259,13 @@ small {
             <p>该结果能否准确捕捉您的真实人格特征？</p>
             <input type="range" min="1" max="7" value="4" id="accuracyRating" data-changed="false" oninput="markRangeSelected(this)">
             <div class="range-labels"><span>1 = 完全不符</span><span>7 = 非常准确</span></div>
+            <div class="range-value-display" id="accuracyRatingValue">当前选择：4分</div>
         </div>
         <div class="question">
             <p>该人格测评结果具有可信度。</p>
             <input type="range" min="1" max="7" value="4" id="credibilityRating" data-changed="false" oninput="markRangeSelected(this)">
             <div class="range-labels"><span>1 = 很低</span><span>7 = 很高</span></div>
+            <div class="range-value-display" id="credibilityRatingValue">当前选择：4分</div>
         </div>
     </div>
     <button onclick="startSelfConcept()">继续</button>
@@ -260,26 +279,31 @@ small {
         <p><strong>1.</strong> 我认为自己是一个能够坚持完成任务的人。</p>
         <input type="range" min="1" max="7" value="4" id="self1" data-changed="false" oninput="markRangeSelected(this)">
         <div class="range-labels"><span>1 = 完全不同意</span><span>7 = 完全同意</span></div>
+        <div class="range-value-display" id="self1Value">当前选择：4分</div>
     </div>
     <div class="question">
         <p><strong>2.</strong> 即使遇到失败，我通常也会继续尝试。</p>
         <input type="range" min="1" max="7" value="4" id="self2" data-changed="false" oninput="markRangeSelected(this)">
         <div class="range-labels"><span>1 = 完全不同意</span><span>7 = 完全同意</span></div>
+        <div class="range-value-display" id="self2Value">当前选择：4分</div>
     </div>
     <div class="question">
         <p><strong>3.</strong> 我认为自己在面对压力时较容易保持冷静。</p>
         <input type="range" min="1" max="7" value="4" id="self3" data-changed="false" oninput="markRangeSelected(this)">
         <div class="range-labels"><span>1 = 完全不同意</span><span>7 = 完全同意</span></div>
+        <div class="range-value-display" id="self3Value">当前选择：4分</div>
     </div>
     <div class="question">
         <p><strong>4.</strong> 我通常对未来结果持积极态度。</p>
         <input type="range" min="1" max="7" value="4" id="self4" data-changed="false" oninput="markRangeSelected(this)">
         <div class="range-labels"><span>1 = 完全不同意</span><span>7 = 完全同意</span></div>
+        <div class="range-value-display" id="self4Value">当前选择：4分</div>
     </div>
     <div class="question">
         <p><strong>5.</strong> 当任务变困难时，我容易失去动力。</p>
         <input type="range" min="1" max="7" value="4" id="self5" data-changed="false" oninput="markRangeSelected(this)">
         <div class="range-labels"><span>1 = 完全不同意</span><span>7 = 完全同意</span></div>
+        <div class="range-value-display" id="self5Value">当前选择：4分</div>
     </div>
     <button onclick="saveSelfAndStartPuzzle()">继续</button>
 </div>
@@ -296,7 +320,7 @@ small {
         <li>六位数全部数字相加得 23。</li>
         <li>中间的两位数构成的两位数减去最左边的两位数的差的 13倍 是最右边的两位数。</li>
     </ol>
-    <p><strong>请填写你认为正确的六位数字密码：</strong></p>
+    <p><strong>请填写您认为正确的六位数字密码：</strong></p>
     <input type="text" id="puzzleAnswer" placeholder="例如: 123456" autocomplete="off">
     <div class="flex-buttons">
         <button onclick="attemptPuzzle()">提交答案</button>
@@ -344,7 +368,7 @@ small {
     <button onclick="finalizeDemographics()">继续</button>
 </div>
 <div class="container hidden" id="debrief">
-    <h2>实验说明</h2>
+    <h2>研究说明</h2>
     <div class="debrief-box">
         <p>🙏 感谢您认真参与本次研究！</p>
         <p>💡 <strong>本研究真实目的：</strong>探究当青少年被贴上积极或消极人格标签后，他们是否会在将来按照这个标签调整自己的自我认知与行为。您在“人格分析反馈”环节收到的结果实际上是<strong>随机分配</strong>的，并非基于您的真实问卷得分。这是为了科学地研究标签效应，请不必担心。</p>
@@ -369,8 +393,14 @@ let sessionStartAt = Date.now();
 let uploadAttempted = false;
 
 function handleExitConsent() {
-    alert("感谢您的理解。您已选择不参加本次研究。");
-    window.close();
+    alert("感谢您的理解。页面即将退出。");
+    setTimeout(() => {
+        try {
+            window.location.replace('about:blank');
+        } catch (e) {
+            window.close();
+        }
+    }, 120);
 }
 
 function continueToPractice() {
@@ -536,7 +566,7 @@ function generateFeedbackWithPersistence() {
         assignedGroup = "积极标签组";
         document.getElementById("feedbackText").innerHTML = `
             <strong>✨ 人格分析报告</strong><br><br>
-            你的测评结果显示，相较于同龄人，你表现出较高水平的坚持性、心理韧性与乐观倾向。<br>
+            您的测评结果显示，相较于同龄人，您表现出较高水平的坚持性、心理韧性与乐观倾向。<br>
             🎯 <strong style="color:#2c4b55;">您的坚持性与心理韧性得分<span style="color:#56878b; background:#e8f4f5; padding:2px 6px; border-radius:4px;">高于</span>同龄人平均水平</strong>。<br>
             💪 拥有此类人格特征的人，通常能够在任务变得困难或令人挫败时持续努力，并在逆境中保持积极心态。<br>
         `;
@@ -547,7 +577,7 @@ function generateFeedbackWithPersistence() {
         assignedGroup = "消极标签组";
         document.getElementById("feedbackText").innerHTML = `
             <strong>🌿 人格分析报告</strong><br><br>
-            你的测评结果显示，在面对高认知负荷任务时，你较容易感到压力，且在困难情境中的坚持能力有所不足。<br>
+            您的测评结果显示，在面对高认知负荷任务时，您较容易感到压力，且在困难情境中的坚持能力有所不足。<br>
             ⚠️ <strong style="color:#2c4b55;">您的坚持性与心理韧性得分<span style="color:#d97b6a; background:#fce8e4; padding:2px 6px; border-radius:4px;">低于</span>同龄人平均水平</strong>。<br>
             📈 这些方面在未来是可以通过训练和实践而改善的。<br>
         `;
@@ -568,10 +598,24 @@ function generateFeedbackWithPersistence() {
     showSection('feedback');
 }
 
+function updateRangeValueDisplay(el) {
+    const display = document.getElementById(`${el.id}Value`);
+    if (display) {
+        display.textContent = `当前选择：${el.value}分`;
+    }
+}
+
+function initRangeValueDisplays() {
+    document.querySelectorAll('input[type="range"]').forEach((slider) => {
+        updateRangeValueDisplay(slider);
+    });
+}
+
 // 从反馈页进入自我认知问卷（调整后位于谜题前）
 function markRangeSelected(el) {
     el.dataset.changed = "true";
     el.classList.add("range-selected");
+    updateRangeValueDisplay(el);
 }
 
 function startSelfConcept() {
@@ -669,7 +713,7 @@ async function attemptPuzzle() {
     }
     if (isCorrect) {
         clearInterval(timerInterval);
-        alert("✅ 密码正确！你成功解决了逻辑谜题，将进入实验说明。");
+        alert("✅ 密码正确！您成功解决了逻辑谜题，将进入研究说明。");
         const endTime = Date.now();
         const persistenceTime = Math.floor((endTime - startTime) / 1000);
         localStorage.setItem("attempts", String(attempts));
@@ -747,6 +791,8 @@ async function finishExperimentAfterPuzzle(outcome = 'unknown', puzzleAnswer = '
 async function finishExperiment() {
     await finishExperimentAfterPuzzle();
 }
+
+initRangeValueDisplays();
 
 function finalizeDemographics() {
     const grade = document.querySelector('input[name="grade"]:checked')?.value;
